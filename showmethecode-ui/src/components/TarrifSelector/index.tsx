@@ -39,7 +39,7 @@ export function TariffSelector( { onOriginSelected, onDestinySelected } : Props 
     const origins = tariffs.map(t=>t.origem).filter(unique).sort().map(toOptions);
     const destinies = tariffs.filter(t=>t.origem === origin).map(t=>t.destino).filter(unique).sort().map(toOptions);
 
-    if(!tariffs) return <>Carregando Tarifas...</>
+    if(tariffs.length === 0) return <>Carregando Tarifas...</>
     return (<>
         <h1>Escolha a Origem: </h1>
         <Select options={origins} onChange={(v) => handleOriginChange(v!.value)} value={{value:origin, label:origin}}/>
