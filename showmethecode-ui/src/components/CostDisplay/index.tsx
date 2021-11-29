@@ -9,6 +9,12 @@ type Props = {
 }
 
 export function CostDisplay( {plan, tariff, duration, defaultCost, planCost} : Props ) {
+
+    const formatPrice = (price:number) => new Intl.NumberFormat('en-US',{
+        style: 'currency',
+        currency: "USD"
+    }).format(price)
+
     return (
         <>
         <table>
@@ -26,8 +32,8 @@ export function CostDisplay( {plan, tariff, duration, defaultCost, planCost} : P
                     <td>{tariff.origem}</td>
                     <td>{tariff.destino}</td>
                     <td>{duration}</td>
-                    <td>{defaultCost}</td>
-                    <td>{planCost}</td>
+                    <td>{formatPrice(defaultCost)}</td>
+                    <td>{formatPrice(planCost)}</td>
                 </tr>
             </tbody>
         </table>
